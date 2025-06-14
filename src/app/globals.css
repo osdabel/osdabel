@@ -3,19 +3,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-wall: rgba(15, 15, 15, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-wall: rgba(72, 136, 210, 1);
+  --color-foretext: rgba(10, 124, 255, 1);
+  /* --color-bginput: rgba(10, 124, 255, 0.2); */
+  --color-bginput: rgba(100, 100, 100, 0.3);
+  
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffff;
+    --foreground: #0a0a0a;
   }
 }
 

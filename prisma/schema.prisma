@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Tim {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  namaTim      String
+  namaKetua    String
+  kelas        String
+  idTim        Int   @unique
+
+}
+
+model Peserta {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  idTim       Int
+  lomba       String
+  namaPeserta String
+  status      String
+  username    String?
+  idML        String?
+}
+
+model Invoice {
+  id                String   @id @default(cuid())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  idInvoice         Int @unique
+  Payed             String?
+  idTim             Int
+  namaKetua         String
+  kelas             String
+  PayStatus         String
+  namaTim           String
+  lomba             String
+}
+
+
+model Admin {
+  id        String   @id @default(cuid())
+  token     String
+  username  String
+  password  String
+}
+
+model PayedTim {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  idTim       Int
+  idInvoice   Int
+  namaTim     String
+  kelas       String
+  namaKetua   String
+  lomba       String
+  total       String
+  payedTo     String
+
+}
